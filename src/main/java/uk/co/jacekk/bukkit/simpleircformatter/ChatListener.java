@@ -3,6 +3,7 @@ package uk.co.jacekk.bukkit.simpleircformatter;
 import net.milkbowl.vault.chat.Chat;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -31,7 +32,8 @@ public class ChatListener extends BaseListener<SimpleIRCFormatter> {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onPlayerRemoteChat(RemotePlayerChatEvent event){
 		String playerName = event.getPlayerName();
-		String worldName = plugin.server.getWorlds().get(0).getName();
+		Player player = plugin.server.getPlayer(playerName);
+		String worldName = (player == null) ? plugin.server.getWorlds().get(0).getName() : player.getWorld().getName();
 		String message = ChatColor.stripColor(event.getMessage());
 		
 		if (message.isEmpty()){
