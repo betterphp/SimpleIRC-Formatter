@@ -28,7 +28,7 @@ public class ChatListener extends BaseListener<SimpleIRCFormatter> {
 		}
 	}
 	
-	@EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onPlayerRemoteChat(RemotePlayerChatEvent event){
 		String playerName = event.getPlayerName();
 		String worldName = plugin.server.getWorlds().get(0).getName();
