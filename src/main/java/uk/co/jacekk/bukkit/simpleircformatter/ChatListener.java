@@ -38,8 +38,14 @@ public class ChatListener extends BaseListener<SimpleIRCFormatter> {
 		}
 		
 		String ircPrefix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.IRC_PREFIX));
-		String prefix = this.chat.getPlayerPrefix(worldName, playerName);
-		String suffix = this.chat.getPlayerSuffix(worldName, playerName);
+		
+		String prefix = "";
+		String suffix = "";
+		
+		if (this.chat != null){
+			prefix = this.chat.getPlayerPrefix(worldName, playerName);
+			suffix = this.chat.getPlayerSuffix(worldName, playerName);
+		}
 		
 		if (prefix.isEmpty()){
 			prefix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.DEFAULT_PREFIX));
