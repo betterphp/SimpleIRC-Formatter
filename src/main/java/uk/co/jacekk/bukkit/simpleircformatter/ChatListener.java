@@ -14,9 +14,6 @@ import uk.co.jacekk.bukkit.simpleirc.RemotePlayerChatEvent;
 
 public class ChatListener extends BaseListener<SimpleIRCFormatter> {
 	
-	public static final String DEFAULT_PREFIX = ChatColor.RED + "[E]" + ChatColor.RESET + "<";
-	public static final String DEFAULT_SUFFIX = "> ";
-	
 	private Chat chat;
 	
 	public ChatListener(SimpleIRCFormatter plugin){
@@ -40,13 +37,19 @@ public class ChatListener extends BaseListener<SimpleIRCFormatter> {
 			event.setCancelled(true);
 		}
 		
+		String ircPrefix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.IRC_PREFIX));
 		String prefix = this.chat.getPlayerPrefix(worldName, playerName);
 		String suffix = this.chat.getPlayerSuffix(worldName, playerName);
 		
-		prefix = ChatColor.AQUA + "[IRC]" + ChatColor.RESET + ((prefix.isEmpty()) ? DEFAULT_PREFIX : ChatUtils.parseFormattingCodes(prefix));
-		suffix = (suffix.isEmpty()) ? DEFAULT_SUFFIX : ChatUtils.parseFormattingCodes(suffix);
+		if (prefix.isEmpty()){
+			prefix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.DEFAULT_PREFIX));
+		}
 		
-		event.setFormat(prefix + "%s" + suffix + "%s");
+		if (suffix.isEmpty()){
+			suffix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.DEFAULT_SUFFIX));
+		}
+		
+		event.setFormat(ircPrefix + prefix + "%s" + suffix + "%s");
 	}
 	
 }
