@@ -45,15 +45,13 @@ public class ChatListener extends BaseListener<SimpleIRCFormatter> {
 		if (this.chat != null){
 			prefix = this.chat.getPlayerPrefix(worldName, playerName);
 			suffix = this.chat.getPlayerSuffix(worldName, playerName);
+		}else{
+			prefix = plugin.config.getString(Config.DEFAULT_PREFIX);
+			suffix = plugin.config.getString(Config.DEFAULT_SUFFIX);
 		}
 		
-		if (prefix.isEmpty()){
-			prefix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.DEFAULT_PREFIX));
-		}
-		
-		if (suffix.isEmpty()){
-			suffix = ChatUtils.parseFormattingCodes(plugin.config.getString(Config.DEFAULT_SUFFIX));
-		}
+		prefix = ChatUtils.parseFormattingCodes(prefix);
+		suffix = ChatUtils.parseFormattingCodes(suffix);
 		
 		event.setFormat(ircPrefix + prefix + "%s" + suffix + "%s");
 	}
