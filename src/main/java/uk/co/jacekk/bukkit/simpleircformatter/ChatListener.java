@@ -8,8 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import uk.co.jacekk.bukkit.baseplugin.v9.event.BaseListener;
-import uk.co.jacekk.bukkit.baseplugin.v9.util.ChatUtils;
+import uk.co.jacekk.bukkit.baseplugin.v9_1.event.BaseListener;
+import uk.co.jacekk.bukkit.baseplugin.v9_1.util.ChatUtils;
 import uk.co.jacekk.bukkit.simpleirc.RemotePlayerChatEvent;
 
 public class ChatListener extends BaseListener<SimpleIRCFormatter> {

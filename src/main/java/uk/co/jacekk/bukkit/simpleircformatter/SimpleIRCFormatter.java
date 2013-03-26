@@ -2,8 +2,8 @@ package uk.co.jacekk.bukkit.simpleircformatter;
 
 import java.io.File;
 
-import uk.co.jacekk.bukkit.baseplugin.v9.BasePlugin;
-import uk.co.jacekk.bukkit.baseplugin.v9.config.PluginConfig;
+import uk.co.jacekk.bukkit.baseplugin.v9_1.BasePlugin;
+import uk.co.jacekk.bukkit.baseplugin.v9_1.config.PluginConfig;
 
 public class SimpleIRCFormatter extends BasePlugin {
 	
