@@ -18,8 +18,13 @@
 		</repository>
 		
 		<repository>
+			<id>jacekk-repo</id>
+			<url>http://bukkit.jacekk.co.uk:8000/plugin/repository/everything/</url>
+		</repository>
+		
+		<repository>
 			<id>vault-repo</id>
-			<url>http://ci.herocraftonline.com/plugin/repository/everything</url>
+			<url>http://ci.herocraftonline.com/plugin/repository/everything/</url>
 		</repository>
 	</repositories>
 	
